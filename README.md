@@ -19,3 +19,5 @@ A web-based tool for generating cover pages for RUET (Rajshahi University of Eng
 ## Fonts
 
 The tool uses local font files. Place the following fonts in the `fonts/` directory:
+
+Use at: https://latexcover.vercel.app or https://ratuuul.github.io/latexcover
