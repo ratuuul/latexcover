@@ -457,7 +457,7 @@
         .uni {
             font-size: 13.5pt;
             font-weight: 700;
-            line-height: 1.25;
+            line-height: 1.75;
             margin: 0;
         }
         .lab-report-on {
@@ -996,7 +996,7 @@
                 <option value="Noto Serif">Noto Serif</option>
                 <option value="TeX Gyre Pagella">TeX Gyre Pagella</option>
                 <option value="Palatino Linotype">Palatino Linotype</option>
-                <option value="P052">P052</option>
+                <option value="P052" selected>P052</option>
             </select>
             <button class="btn-secondary" id="resetBtn" type="button">↺ Reset</button>
             <button class="btn-primary" id="printBtn" type="button">PDF</button>
@@ -1034,11 +1034,11 @@
                 <div class="field-row">
                     <div class="field">
                         <label for="CourseCode">Course Code</label>
-                        <input type="text" id="CourseCode" value="ETE 2110">
+                        <input type="text" id="CourseCode" value="ETE 21XX">
                     </div>
                     <div class="field">
                         <label for="CourseTitle">Course Title</label>
-                        <input type="text" id="CourseTitle" value="Electronic Circuit Design and Simulation Lab">
+                        <input type="text" id="CourseTitle" value="Sessional Based on ETE 21XX">
                     </div>
                 </div>
             </div>
@@ -1049,11 +1049,11 @@
                 <div class="field-row">
                     <div class="field">
                         <label for="ExpNo">Experiment No.</label>
-                        <input type="text" id="ExpNo" value="4">
+                        <input type="text" id="ExpNo" value="01">
                     </div>
                     <div class="field">
                         <label for="ExpName">Experiment Title</label>
-                        <input type="text" id="ExpName" value="Experimental Study of Low Pass Filter, High Pass Filter, Band Pass Filter and Band Stop Filter Using MATLAB Simulink.">
+                        <input type="text" id="ExpName" value="Experimental Study on How to do an Experiment.">
                     </div>
                 </div>
             </div>
@@ -1063,12 +1063,12 @@
                 <div class="section-title"><span class="dot"></span>Student</div>
                 <div class="field">
                     <label for="StudentName">Name</label>
-                    <input type="text" id="StudentName" value="Hossain Mohammod Ratul">
+                    <input type="text" id="StudentName" value="hekerman">
                 </div>
                 <div class="field-row">
                     <div class="field">
                         <label for="StudentRoll">Roll No.</label>
-                        <input type="text" id="StudentRoll" value="2404002">
+                        <input type="text" id="StudentRoll" value="24040XX">
                     </div>
                     <div class="field">
                         <label for="StudentSession">Session</label>
@@ -1082,7 +1082,7 @@
                 <div class="section-title"><span class="dot"></span>Teacher</div>
                 <div class="field">
                     <label for="Teacher">Name</label>
-                    <input type="text" id="Teacher" value="Sharaf Tasnim">
+                    <input type="text" id="Teacher" value="Teacher Name">
                 </div>
                 <div class="field">
                     <label for="Designation">Designation</label>
@@ -1100,7 +1100,7 @@
                 <div class="field-row">
                     <div class="field">
                         <label for="DateExp">Date of Experiment</label>
-                        <input type="date" id="DateExp" value="2026-08-04">
+                        <input type="date" id="DateExp" value="">
                     </div>
                     <div class="field">
                         <label for="DateSub">Date of Submission</label>
@@ -1259,7 +1259,7 @@
 
             // ── format date ──────────────────────────────────────────
             function fmt(iso) {
-                if (!iso) return '';
+                if (!iso) return '20XX-XX-XX';
                 const parts = iso.split('-');
                 if (parts.length !== 3) return iso;
                 return `${parts[2]}/${parts[1]}/${parts[0]}`;
