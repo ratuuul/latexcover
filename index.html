@@ -101,6 +101,13 @@
         font-weight: 700;
         font-style: italic;
       }
+      @font-face {
+        font-family: "Book Antiqua";
+        src: url("fonts/BookAntiqua/bookantiqua.ttf")
+          format("opentype");
+        font-weight: 700;
+        font-style: normal;
+      }
 
       /* =====================================================================
            GLOBAL RESET & BASE
@@ -1032,6 +1039,7 @@
           <option value="TeX Gyre Pagella">TeX Gyre Pagella</option>
           <option value="Palatino Linotype">Palatino Linotype</option>
           <option value="P052" selected>P052</option>
+          <option value="P052">Book Antiqua</option>
           <option value="custom">Custom Font</option>
         </select>
         <button class="btn-secondary" id="resetBtn" type="button">
