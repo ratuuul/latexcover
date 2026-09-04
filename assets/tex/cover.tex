@@ -1,0 +1,169 @@
+% ========================================================================
+% STANDALONE EXPERIMENT COVER PAGE — RUET LAB REPORT
+% ========================================================================
+% This file reproduces exactly the cover page shown in the provided image.
+% It is a single, self‑contained .tex file that compiles on Overleaf.
+% The only external dependency is ruet_logo.png (place it in the same folder).
+% ========================================================================
+
+\documentclass[a4paper,12pt]{report}
+
+% ----- Required Packages -------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage{fourier}                % matches original font
+\usepackage{graphicx}               % for logo
+\usepackage[top=1in, bottom=1in, left=1.2in, right=1in]{geometry}
+\usepackage{multicol}               % for the three‑column section
+\usepackage{enumitem}               % for custom itemize
+\usepackage{xcolor}                 % for coloured rules
+\usepackage{titlesec}               % for chapter title formatting
+\usepackage{tocloft}                % for TOC tweaks (used in original)
+\usepackage{sectsty}                % for font size settings
+\usepackage{textgreek}              % for Greek letters like μ
+\usepackage{marvosym}               % for \Pointinghand (if needed)
+\usepackage{setspace}               % for line spacing
+\usepackage{fancyhdr}               % for page style (empty)
+
+% ----- Layout Settings (exactly as original) -----------------------------
+\linespread{1.25}
+\setlength{\columnseprule}{0pt}     % no rule between multicols
+
+% ----- Custom Rule Command (from ASMBsty) --------------------------------
+\NewDocumentCommand{\myrule}{O{1pt} O{2pt} O{black}}{%
+  \par\nobreak
+  \kern\the\prevdepth
+  \kern#2
+  {\color{#3}\hrule height #1 width\hsize}
+  \kern#2
+  \nointerlineskip
+}
+
+% ----- Chapter Title Format (from ASMBsty) -------------------------------
+\renewcommand{\chaptername}{Experiment}
+\titleformat{\chapter}[display]
+  {\centering\Large\bfseries}{\chaptertitlename \ \thechapter}{0pt}{\large}
+\titlespacing*{\chapter}{0pt}{-8pt}{0pt}
+
+% ----- Section Font Sizes (from ASMBsty) ---------------------------------
+\chapternumberfont{\fontsize{14}{5}\selectfont}
+\chaptertitlefont{\fontsize{14}{12}\selectfont}
+
+% ----- Document Information (from ASMBsty) -------------------------------
+\newcommand{\Moto}{Heaven's Light is Our Guide}
+\newcommand{\LogoTitle}{\centerline{\includegraphics[width=3.5cm]{ruet_logo.png}}}
+\newcommand{\LogoExp}{\centerline{\includegraphics[width=2.5cm]{ruet_logo.png}}}
+\newcommand{\Dept}{Department of Electronics \& Telecommunication Engineering}
+\newcommand{\University}{Rajshahi University of Engineering \& Technology}
+
+% ----- Course, Student, Teacher Info (from main.tex) ---------------------
+\newcommand{\CourseCode}{ETE XXXX}
+\newcommand{\CourseTitle}{Sessional Based on ETE XXXX}
+\newcommand{\StudentName}{Donald Trump}
+\newcommand{\StudentRoll}{Roll No. 24040XX}
+\newcommand{\StudentSession}{Session: 20XX-XX}
+\newcommand{\Teacher}{Teacher's Name}
+\newcommand{\Designation}{Assistant Professor}
+\newcommand{\TDept}{Dept. of ETE, RUET}
+
+% ----- No page numbers, header/footer ------------------------------------
+\pagestyle{empty}
+
+% ========================================================================
+% BEGIN DOCUMENT
+% ========================================================================
+\begin{document}
+
+% ----- Experiment Cover Page (exactly as in image) -----------------------
+\thispagestyle{empty}                % ensure no page number on this page
+\begin{center}
+   % Moto and Logo (reordered)
+    {\small \textit{\Moto}} \\[0.5pc]
+    \LogoExp
+    \vspace{0.2cm}
+
+    % Department and University
+    {\large \textbf{\Dept}} \\
+    {\large \textbf{\University}} \\[0.5cm]
+
+    % "Laboratory Report on"
+    \textbf{\Large Laboratory Report on} \\[0.2cm]
+    \textbf{\large \CourseCode} \textbf{\large (\CourseTitle)} \\[0.8cm]
+
+    % Upper rule
+    \myrule[1pt][5pt]
+
+    % Chapter heading (simulates \chapter inside minipage)
+    \begin{minipage}{\textwidth}
+    \setcounter{chapter}{1}
+        \chapter{Experimental study of determination of modulation index of FM wave.}
+        \label{chp:1}
+    \end{minipage}
+    \vspace{0.2cm}
+
+    % Force empty page style after \chapter (which would otherwise add a number)
+    \thispagestyle{empty}
+
+    % Lower rule
+    \myrule[1pt][5pt]
+    \vspace{0.5cm}
+
+    % Student and Teacher info in two minipages
+    \noindent
+    \begin{minipage}[t]{0.46\linewidth}
+    \begin{flushleft}
+    \normalsize \emph{\textbf{Submitted by:}}\\
+    \StudentName\\
+    \StudentRoll\\
+    \StudentSession
+    \end{flushleft}
+    \end{minipage}\hspace*{0.002\linewidth}
+    \begin{minipage}[t]{0.46\linewidth}
+    \begin{flushright}
+    \normalsize \emph{\textbf{Submitted to:}}\\
+    \Teacher\\
+    \Designation\\
+    \TDept
+    \end{flushright}
+    \end{minipage}
+    \vspace{0.5cm}
+
+    % Dates
+    \textbf{Date of Experiment : 15/08/2026} \\
+    \textbf{Date of Submission : 02/09/2026}
+    \vspace{4cm}
+
+    % Horizontal rule before the three columns
+    \hrulefill
+    \vspace{0.2cm}
+
+    % Three columns: Report Writing, Teacher's Section, Lab Viva
+    \begin{multicols}{3}
+        \textbf{\underline{Report Writing}}
+        \begin{itemize}[labelindent=3em, labelsep=0.5cm, leftmargin=*, noitemsep]
+            \item[$\square$] Excellent
+            \item[$\square$] Good
+            \item[$\square$] Average
+            \item[$\square$] Poor
+        \end{itemize}
+        \columnbreak
+
+        \textbf{(Teacher's Section)} \\
+        \vspace{1.5cm}
+        \hrulefill \\
+        Signature
+        \columnbreak
+
+        \textbf{\underline{Lab Viva}}
+        \begin{itemize}[labelindent=3em, labelsep=0.5cm, leftmargin=*, noitemsep]
+            \item[$\square$] Excellent
+            \item[$\square$] Good
+            \item[$\square$] Average
+            \item[$\square$] Poor
+        \end{itemize}
+    \end{multicols}
+
+    \vspace{1cm}
+\end{center}
+
+% ========================================================================
+\end{document}

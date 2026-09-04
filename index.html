@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ruetLateX — RUET Lab Cover Page Generator</title>
+<meta name="description" content="Pixel-perfect LaTeX-based RUET lab report cover page generator with live preview, tap-to-edit and one-click PDF." />
+<link rel="stylesheet" href="css/styles.css" />
+<link rel="preload" href="assets/fonts/PalatinoNova/PalatinoNova-Regular.ttf" as="font" type="font/ttf" crossorigin />
+<link rel="preload" href="assets/fonts/PalatinoNova/PalatinoNova-Bold.ttf" as="font" type="font/ttf" crossorigin />
+<script data-goatcounter="https://hekerman.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+</head>
+<body>
+
+<!-- SINGLE roomy nav : brand + links + actions, no second bar -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark">R</span>
+      <span class="brand-text">ruet<b>LateX</b><small>RUET Cover Generator</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="#editor">Editor</a>
+      <a href="#previewSec">Preview</a>
+      <a href="#texSec">LaTeX</a>
+      <a href="#guide">Guide</a>
+      <span class="nav-cta-row">
+        <button class="tap-toggle" id="tapEditToggle" type="button" role="switch" aria-checked="false" title="Click any text in the preview to jump to its field"><span class="sw" aria-hidden="true"></span><span>Tap-to-edit</span></button>
+        <button class="btn btn-ghost btn-sm" id="topPrintBtn" type="button">Print preview</button>
+        <button class="btn btn-primary btn-sm" id="topPdfBtn" type="button">One-click PDF</button>
+      </span>
+    </nav>
+    <div class="nav-actions">
+      <button class="tap-toggle tap-compact" id="tapEditToggleMobile" type="button" role="switch" aria-checked="false" title="Click any text in the preview to jump to its field"><span class="sw" aria-hidden="true"></span><span>Tap to Edit</span></button>
+      <button class="btn btn-primary btn-sm nav-pdf" id="navPdfBtn" type="button">PDF</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="layout" id="editor">
+    <!-- ============ EDITOR (roomy) ============ -->
+    <section class="editor panel">
+      <div class="panel-head">
+        <h2>Editing <span class="live-badge"><span class="live-dot"></span>Live</span></h2>
+        <button class="btn btn-ghost btn-sm" id="resetBtn" type="button">Reset</button>
+      </div>
+
+      <!-- FONT -->
+      <details class="card" open>
+        <summary>Typography — font</summary>
+        <div class="card-body">
+          <label class="field"><span>Document font</span>
+            <select id="fontSelect">
+              <option value="'Book Antiqua', 'Palatino Linotype', serif">Book Antiqua</option>
+              <option value="'Droid Serif', serif">Droid Serif</option>
+              <option value="'P052', 'Palatino', serif">P052</option>
+              <option value="'Palatino Nova', 'Book Antiqua', serif" selected>Palatino Nova</option>
+              <option value="'TeX Gyre Pagella', 'Palatino', serif">TeX Gyre Pagella</option>
+              <option value="'Times New Roman', Times, serif">Times New Roman</option>
+              <option value="custom">Custom Google Font…</option>
+            </select>
+          </label>
+          <div class="row2">
+            <label class="field"><span>Base size</span>
+              <select id="baseSize"><option value="11.5">11.5pt</option><option value="12" selected>12pt (LaTeX)</option><option value="12.5">12.5pt</option><option value="13">13pt</option><option value="custom">Custom…</option></select>
+              <input id="baseSizeCustom" type="number" min="8" max="20" step="0.5" placeholder="e.g. 14" hidden />
+            </label>
+            <label class="field"><span>Line spacing</span>
+              <select id="lineSpacing"><option value="1.15">1.15</option><option value="1.25" selected>1.25 (LaTeX)</option><option value="1.4">1.4</option><option value="1.5">1.5</option><option value="custom">Custom…</option></select>
+              <input id="lineSpacingCustom" type="number" min="1" max="3" step="0.05" placeholder="e.g. 1.6" hidden />
+            </label>
+          </div>
+          <div class="custom-font" id="customFontWrap" hidden>
+            <p class="mini-head">Custom Google Font via link</p>
+            <label class="field"><span>Paste Google Fonts &lt;link&gt; or URL</span>
+              <input id="gfontUrl" type="url" placeholder="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" />
+            </label>
+            <label class="field"><span>Font-family name (as in CSS)</span>
+              <input id="gfontName" type="text" placeholder="e.g. Hind Siliguri" />
+            </label>
+            <button class="btn btn-secondary btn-sm" id="gfontAdd" type="button">Load custom font</button>
+            <p class="hint">We inject the link, add it to the dropdown and apply it to the cover instantly. Works for print too (needs internet).</p>
+          </div>
+        </div>
+      </details>
+
+      <!-- HEADER -->
+      <details class="card" open>
+        <summary>Header — motto, logo, university</summary>
+        <div class="card-body">
+          <label class="field"><span>Motto</span><input id="in-moto" data-bind="moto" type="text" value="Heaven's Light is Our Guide" /></label>
+          <label class="field"><span>Department</span><input id="in-dept" data-bind="dept" type="text" value="Department of Electronics & Telecommunication Engineering" /></label>
+          <label class="field"><span>University</span><input id="in-univ" data-bind="univ" type="text" value="Rajshahi University of Engineering & Technology" /></label>
+          <div class="row2">
+            <label class="field"><span>Logo width (cm)</span><input id="logoWidth" type="range" min="1.5" max="4.5" step="0.1" value="2.5" /><em class="val" id="logoWidthVal">2.5 cm</em></label>
+            <label class="field"><span>Logo position (drag left / right)</span><input id="logoPos" type="range" min="-40" max="40" step="1" value="0" /><em class="val" id="logoPosVal">centered</em></label>
+          </div>
+          <label class="field"><span>Report heading</span><input data-bind="reportHead" type="text" value="Laboratory Report on" /></label>
+          <div class="row2">
+            <label class="field"><span>Course code</span>
+              <div class="combo" id="courseCombo">
+                <input data-bind="courseCode" id="in-courseCode" type="text" value="ETE XXXX" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="courseList" aria-autocomplete="list" placeholder="Type to search courses…" />
+                <ul class="combo-list" id="courseList" role="listbox" aria-label="Sessional courses" hidden></ul>
+              </div>
+            </label>
+            <label class="field"><span>Course title (in brackets)</span>
+              <div class="combo" id="titleCombo">
+                <input data-bind="courseTitle" id="in-courseTitle" type="text" value="Sessional Based on ETE XXXX" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="titleList" aria-autocomplete="list" placeholder="Type to search titles…" />
+                <ul class="combo-list" id="titleList" role="listbox" aria-label="Sessional course titles" hidden></ul>
+              </div>
+            </label>
+          </div>
+        </div>
+      </details>
+
+      <!-- EXPERIMENT -->
+      <details class="card" open>
+        <summary>Experiment block</summary>
+        <div class="card-body">
+          <div class="row2">
+            <label class="field"><span>Label</span><input data-bind="expLabel" type="text" value="Experiment" /></label>
+            <label class="field"><span>Number</span><input data-bind="expNo" type="text" value="01" /></label>
+          </div>
+          <label class="field"><span>Experiment title (wraps, bold)</span><textarea data-bind="expTitle" rows="3">Experimental Study on How to Conduct an Experiment.</textarea></label>
+          <div class="row2">
+            <label class="field"><span>Rule thickness</span><select id="ruleThick"><option value="1">1pt (exact)</option><option value="1.5">1.5pt</option><option value="2">2pt</option></select></label>
+            <label class="field"><span>Rule gap</span><select id="ruleGap"><option value="compact">Compact</option><option value="normal" selected>Normal (LaTeX)</option><option value="wide">Wide</option></select></label>
+          </div>
+        </div>
+      </details>
+
+      <!-- PEOPLE -->
+      <details class="card" open>
+        <summary>Submitted by / to + dates</summary>
+        <div class="card-body">
+          <div class="grid2">
+            <div>
+              <label class="field"><span>Left heading</span><input data-bind="byLabel" type="text" value="Submitted by:" /></label>
+              <label class="field"><span>Student name</span><input data-bind="student" type="text" value="Donald Trump" /></label>
+              <label class="field"><span>Roll</span><input data-bind="roll" type="text" value="Roll No. 24040XX" /></label>
+              <label class="field"><span>Session</span><input data-bind="session" type="text" value="Session: 20XX-XX" /></label>
+            </div>
+            <div>
+              <label class="field"><span>Right heading</span><input data-bind="toLabel" type="text" value="Submitted to:" /></label>
+              <label class="field"><span>Teacher name</span>
+                <div class="combo" id="teacherCombo">
+                  <input data-bind="teacher" id="in-teacher" type="text" value="Teacher's Name" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="teacherList" aria-autocomplete="list" placeholder="Type to search faculty…" />
+                  <ul class="combo-list" id="teacherList" role="listbox" aria-label="RUET ETE faculty" hidden></ul>
+                </div>
+              </label>
+              <label class="field"><span>Designation</span><input data-bind="desig" id="in-desig" type="text" value="Assistant Professor" /></label>
+              <label class="field"><span>Teacher dept</span><input data-bind="tdept" type="text" value="Dept. of ETE, RUET" /></label>
+            </div>
+          </div>
+          <div class="row2">
+            <label class="field"><span>Date of experiment label</span><input data-bind="dateExpLabel" type="text" value="Date of Experiment :" /></label>
+            <label class="field"><span>Date of experiment</span><input data-bind="dateExp" type="text" value="01/01/2026" /></label>
+          </div>
+          <div class="row2">
+            <label class="field"><span>Date of submission label</span><input data-bind="dateSubLabel" type="text" value="Date of Submission :" /></label>
+            <label class="field"><span>Date of submission</span><input data-bind="dateSub" type="text" value="11/08/2026" /></label>
+          </div>
+        </div>
+      </details>
+
+      <!-- FOOTER : collapsed by default, toggle reveals the boxes -->
+      <details class="card" open>
+        <summary>Bottom marking table</summary>
+        <div class="card-body">
+          <button class="mini-toggle" id="markingToggle" type="button" role="switch" aria-checked="false" aria-controls="markingFields"><span class="sw" aria-hidden="true"></span><span>Customize marking table</span></button>
+          <div id="markingFields" hidden>
+          <div class="row2">
+            <label class="field"><span>Left title</span><input data-bind="rwTitle" type="text" value="Report Writing" /></label>
+            <label class="field"><span>Right title</span><input data-bind="vivaTitle" type="text" value="Lab Viva" /></label>
+          </div>
+          <label class="field"><span>Middle title</span><input data-bind="teacherSec" type="text" value="(Teacher's Section)" /></label>
+          <label class="field"><span>Signature caption</span><input data-bind="signCap" type="text" value="Signature" /></label>
+          <label class="check"><input type="checkbox" id="showPoor" checked /> Show “Poor” row (uncheck for 3-row marking)</label>
+          <label class="check"><input type="checkbox" id="upperRule" checked /> Show upper rule</label>
+          <label class="check"><input type="checkbox" id="lowerRule" checked /> Show lower rule</label>
+          <label class="check"><input type="checkbox" id="bottomRule" checked /> Show bottom rule above marking table</label>
+          </div>
+        </div>
+      </details>
+
+      <details class="card" id="texSec">
+        <summary>LaTeX (.tex) — live generated</summary>
+        <div class="card-body">
+          <p class="hint">Faithful standalone <code>report</code> class file. Uses <code>ruet_logo.png</code> in same folder. Copy to Overleaf or download.</p>
+          <div class="tex-actions">
+            <button class="btn btn-secondary btn-sm" id="texCopy" type="button">Copy .tex</button>
+            <button class="btn btn-secondary btn-sm" id="texDownload" type="button">Download .tex</button>
+          </div>
+          <pre class="texbox"><code id="texCode"></code></pre>
+        </div>
+      </details>
+
+      <details class="card" id="guide">
+        <summary>How to get a perfect print / PDF</summary>
+        <div class="card-body guide">
+          <ol>
+            <li><b>One-click PDF</b> downloads the exact A4 cover as a PDF file straight to your device.</li>
+            <li><b>Print preview</b> opens the browser print dialog — pick printer or <i>Save as PDF</i>, paper <i>A4</i>, margins <i>None</i>. Strictly one page.</li>
+            <li><b>Overleaf:</b> download <b>.tex</b> + place <b>ruet_logo.png</b> beside it, compile with pdfLaTeX.</li>
+            <li><b>Tap-to-edit:</b> click any line in the preview to jump to its field. Double-click edits text in place.</li>
+          </ol>
+          <p class="hint">Reference files in this project: <code>assets/tex/cover.tex</code>, <code>assets/images/ruet_logo.png</code>, <code>reference/</code>.</p>
+        </div>
+      </details>
+    </section>
+
+    <!-- ============ PREVIEW — windowless, real-size A4 beside editor (compare.html style) ============ -->
+    <section class="preview-col" id="previewSec">
+      <div class="preview-wrap" id="stage">
+        <div class="preview-scaler" id="scaler">
+          <div class="sheet" id="sheet">
+            <div class="page-inner" id="pageInner">
+              <div class="top-block">
+                <p class="moto" data-field="moto" title="Click to edit motto"><em id="v-moto">Heaven's Light is Our Guide</em></p>
+                <div class="logo-wrap" data-field="logo"><img id="v-logo" src="assets/images/ruet_logo.png" alt="RUET logo" fetchpriority="high" decoding="async" width="236" height="236" /></div>
+                <p class="dept" data-field="dept" id="v-dept">Department of Electronics &amp; Telecommunication Engineering</p>
+                <p class="univ" data-field="univ" id="v-univ">Rajshahi University of Engineering &amp; Technology</p>
+                <p class="labhead" data-field="reportHead" id="v-reportHead">Laboratory Report on</p>
+                <p class="course" data-field="courseCode"><strong id="v-courseCode">ETE XXXX</strong> <strong>(<span id="v-courseTitle">Sessional Based on ETE XXXX</span>)</strong></p>
+              </div>
+
+              <hr class="rule" id="ruleTop" />
+
+              <div class="chapter">
+                <div class="exp-no"><span id="v-expLabel" data-field="expLabel">Experiment</span> <span id="v-expNo" data-field="expNo">01</span></div>
+                <span class="exp-title" data-field="expTitle" id="v-expTitle">Experimental Study on How to conduct an Experiment.</span>
+              </div>
+
+              <hr class="rule" id="ruleBottom" />
+
+              <div class="people">
+                <div class="person left">
+                  <p class="p-head" data-field="byLabel" id="v-byLabel">Submitted by:</p>
+                  <p data-field="student" id="v-student">Donald Trump</p>
+                  <p data-field="roll" id="v-roll">Roll No. 24040XX</p>
+                  <p data-field="session" id="v-session">Session: 20XX-XX</p>
+                </div>
+                <div class="person right">
+                  <p class="p-head" data-field="toLabel" id="v-toLabel">Submitted to:</p>
+                  <p data-field="teacher" id="v-teacher">Teacher's Name</p>
+                  <p data-field="desig" id="v-desig">Assistant Professor</p>
+                  <p data-field="tdept" id="v-tdept">Dept. of ETE, RUET</p>
+                </div>
+              </div>
+
+              <div class="dates">
+                <p><strong><span id="v-dateExpLabel" data-field="dateExpLabel">Date of Experiment :</span> <span id="v-dateExp" data-field="dateExp">04/08/2026</span></strong></p>
+                <p><strong><span id="v-dateSubLabel" data-field="dateSubLabel">Date of Submission :</span> <span id="v-dateSub" data-field="dateSub">11/08/2026</span></strong></p>
+              </div>
+
+              <div class="spacer"></div>
+
+              <!-- THREE-COL : mirrors \begin{multicols}{3} in cover.tex -->
+              <div class="marks" id="ruleFooterWrap">
+                <div class="mark-col">
+                  <h4 class="mark-head under" data-field="rwTitle"><u id="v-rwTitle">Report Writing</u></h4>
+                  <ul>
+                    <li><span class="box">☐</span> Excellent</li>
+                    <li><span class="box">☐</span> Good</li>
+                    <li><span class="box">☐</span> Average</li>
+                    <li class="poor-row"><span class="box">☐</span> Poor</li>
+                  </ul>
+                </div>
+                <div class="mark-col center sig-col">
+                  <h4 class="mark-head" data-field="teacherSec" id="v-teacherSec">(Teacher's Section)</h4>
+                  <div class="sig-space"></div>
+                  <div class="sig-line"></div>
+                  <p class="sig-cap" data-field="signCap" id="v-signCap">Signature</p>
+                </div>
+                <div class="mark-col">
+                  <h4 class="mark-head under" data-field="vivaTitle"><u id="v-vivaTitle">Lab Viva</u></h4>
+                  <ul>
+                    <li><span class="box">☐</span> Excellent</li>
+                    <li><span class="box">☐</span> Good</li>
+                    <li><span class="box">☐</span> Average</li>
+                    <li class="poor-row"><span class="box">☐</span> Poor</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="foot">
+    <p><b>ruetLateX</b> — LaTeX-faithful RUET cover generator • Palatino Nova default • print: A4, margins None</p>
+  </footer>
+</main>
+
+<!-- print-only root: the live sheet is moved here for printing -->
+<div id="printRoot"></div>
+
+<script src="js/app.js" defer></script>
+</body>
+</html>

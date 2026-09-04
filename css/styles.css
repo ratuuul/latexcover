@@ -1,0 +1,290 @@
+/* ruetLateX — single roomy nav, windowless real-size A4, one-page print */
+@font-face{font-family:'Book Antiqua';src:url('../assets/fonts/BookAntiqua/Book%20Antiqua.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Book Antiqua';src:url('../assets/fonts/BookAntiqua/Book%20Antiqua%20Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Book Antiqua';src:url('../assets/fonts/BookAntiqua/bookantiquaitalic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap;}
+@font-face{font-family:'Book Antiqua';src:url('../assets/fonts/BookAntiqua/bookantiquabolditalic.ttf') format('truetype');font-weight:700;font-style:italic;font-display:swap;}
+@font-face{font-family:'Droid Serif';src:url('../assets/fonts/DroidSerif/DroidSerif-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Droid Serif';src:url('../assets/fonts/DroidSerif/DroidSerif-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Droid Serif';src:url('../assets/fonts/DroidSerif/DroidSerif-Italic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap;}
+@font-face{font-family:'Droid Serif';src:url('../assets/fonts/DroidSerif/DroidSerif-BoldItalic.ttf') format('truetype');font-weight:700;font-style:italic;font-display:swap;}
+@font-face{font-family:'Palatino Nova';src:url('../assets/fonts/PalatinoNova/PalatinoNova-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Palatino Nova';src:url('../assets/fonts/PalatinoNova/PalatinoNova-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Palatino Nova';src:url('../assets/fonts/PalatinoNova/PalatinoNova-Italic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap;}
+@font-face{font-family:'Palatino Nova';src:url('../assets/fonts/PalatinoNova/PalatinoNova-BoldItalic.ttf') format('truetype');font-weight:700;font-style:italic;font-display:swap;}
+@font-face{font-family:'P052';src:url('../assets/fonts/P052/p052-roman.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'P052';src:url('../assets/fonts/P052/p052-bold.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'P052';src:url('../assets/fonts/P052/p052-italic.otf') format('opentype');font-weight:400;font-style:italic;font-display:swap;}
+@font-face{font-family:'P052';src:url('../assets/fonts/P052/p052-bolditalic.otf') format('opentype');font-weight:700;font-style:italic;font-display:swap;}
+/* Legacy alias: old 'Palatino RUET' value maps to the same native files */
+@font-face{font-family:'Palatino RUET';src:url('../assets/fonts/PalatinoNova/PalatinoNova-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Palatino RUET';src:url('../assets/fonts/PalatinoNova/PalatinoNova-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Palatino RUET';src:url('../assets/fonts/PalatinoNova/PalatinoNova-Italic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap;}
+@font-face{font-family:'Palatino RUET';src:url('../assets/fonts/PalatinoNova/PalatinoNova-BoldItalic.ttf') format('truetype');font-weight:700;font-style:italic;font-display:swap;}
+/* Legacy alias: old 'Noto Serif' value maps to Droid Serif native files */
+@font-face{font-family:'Noto Serif';src:url('../assets/fonts/DroidSerif/DroidSerif-Regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Noto Serif';src:url('../assets/fonts/DroidSerif/DroidSerif-Bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Noto Serif';src:url('../assets/fonts/DroidSerif/DroidSerif-Italic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap;}
+@font-face{font-family:'Noto Serif';src:url('../assets/fonts/DroidSerif/DroidSerif-BoldItalic.ttf') format('truetype');font-weight:700;font-style:italic;font-display:swap;}
+@font-face{font-family:'TeX Gyre Pagella';src:url('../assets/fonts/TexGyrePagella/texgyrepagella-regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'TeX Gyre Pagella';src:url('../assets/fonts/TexGyrePagella/texgyrepagella-bold.otf') format('opentype');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'TeX Gyre Pagella';src:url('../assets/fonts/TexGyrePagella/texgyrepagella-italic.otf') format('opentype');font-weight:400;font-style:italic;font-display:swap;}
+@font-face{font-family:'TeX Gyre Pagella';src:url('../assets/fonts/TexGyrePagella/texgyrepagella-bolditalic.otf') format('opentype');font-weight:700;font-style:italic;font-display:swap;}
+@font-face{font-family:'Times New Roman';src:url('../assets/fonts/TimesNewRoman/regular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Times New Roman';src:url('../assets/fonts/TimesNewRoman/bold.ttf') format('truetype');font-weight:700;font-style:normal;font-display:swap;}
+@font-face{font-family:'Times New Roman';src:url('../assets/fonts/TimesNewRoman/italic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap;}
+@font-face{font-family:'Times New Roman';src:url('../assets/fonts/TimesNewRoman/bolditalic.ttf') format('truetype');font-weight:700;font-style:italic;font-display:swap;}
+
+:root{
+  --bg:#ffffff; --panel:#fff; --ink:#1a1a1a; --muted:#6b7280;
+  --line:#e5e3df; --brand:#0f766e; --brand2:#115e59;
+  --radius:12px; --shadow:rgba(15,15,15,.06) 0px 1px 3px 0px;
+  --sheet-font:'Palatino Nova','Book Antiqua',serif;
+  --base-pt:12; --leading:1.25;
+  --nav-h:64px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;min-height:100vh}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:.85em;background:#eef2f7;padding:1px 6px;border-radius:6px}
+
+/* SINGLE NAV — roomy 64px, generous spacing; collapses gracefully */
+.nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid var(--line);min-height:var(--nav-h);display:flex;align-items:center}
+.nav-inner{width:100%;max-width:1480px;margin:0 auto;padding:10px 28px;display:flex;align-items:center;gap:24px;position:relative}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);flex-shrink:0}
+.brand-mark{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#0f766e,#134e4a);color:#fff;display:grid;place-items:center;font-weight:800;font-size:21px;font-family:Georgia,serif;flex-shrink:0}
+.brand-text{font-weight:800;font-size:20px;letter-spacing:-.02em;line-height:1.1;white-space:nowrap}
+.brand-text b{color:var(--brand)}
+.brand-text small{display:block;font-weight:500;font-size:11px;color:var(--muted)}
+.nav-links{display:flex;align-items:center;gap:22px;margin-left:8px;flex:1;min-width:0}
+.nav-links a{color:#37352f;text-decoration:none;font-weight:500;font-size:14.5px;white-space:nowrap;padding:6px 2px}
+.nav-links a:hover{color:var(--brand)}
+.nav-cta-row{display:flex;align-items:center;gap:10px;margin-left:auto;flex-shrink:0}
+.nav-actions{margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0}
+.nav-pdf{display:none}
+.hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;background:#fff;border:1px solid var(--line);border-radius:9px;padding:9px 10px;cursor:pointer;min-width:40px;min-height:40px}
+.hamburger span{width:20px;height:2px;background:#111827;border-radius:2px;display:block;transition:transform .2s,opacity .2s}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* BUTTONS — roomy */
+.btn{border:1px solid transparent;border-radius:9px;padding:9px 18px;font-weight:500;font-size:14px;cursor:pointer;transition:.15s;white-space:nowrap;font-family:inherit}
+.btn-sm{padding:8px 16px;font-size:13.5px}
+.btn-primary{background:var(--brand);color:#fff}
+.btn-primary:hover{background:var(--brand2)}
+.btn-secondary{background:#111827;color:#fff}
+.btn-ghost{background:transparent;border-color:#c8c4be;color:#1a1a1a}
+.btn-ghost:hover{background:#f6f5f4}
+.tap-toggle{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:500;font-family:inherit;background:#f6f5f4;border:1px solid var(--line);padding:7px 14px 7px 8px;border-radius:999px;cursor:pointer;white-space:nowrap;color:var(--ink)}
+.tap-toggle .sw{position:relative;width:38px;height:22px;border-radius:999px;background:#c8c4be;transition:background .2s;flex-shrink:0}
+.tap-toggle .sw::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:left .2s}
+.tap-toggle.on{background:#ecfdf5;border-color:#a7f3d0}
+.tap-toggle.on .sw{background:var(--brand)}
+.tap-toggle.on .sw::after{left:19px}
+/* compact tap-to-edit in the always-visible mobile bar — hidden on desktop */
+.tap-toggle.tap-compact{display:none}
+@media(max-width:1024px){
+  .tap-toggle.tap-compact{display:flex;align-items:center;gap:6px;font-size:12px;padding:5px 10px 5px 6px}
+  .tap-toggle.tap-compact .sw{width:30px;height:18px}
+  .tap-toggle.tap-compact .sw::after{top:2.5px;left:2.5px;width:13px;height:13px}
+  .tap-toggle.tap-compact.on .sw::after{left:14.5px}
+}
+/* small switch used inside cards (marking table etc.) */
+.mini-toggle{display:flex;align-items:center;gap:9px;font-size:13px;font-weight:500;font-family:inherit;background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:9px;cursor:pointer;color:var(--ink);width:100%}
+.mini-toggle:hover{border-color:#a4a097}
+.mini-toggle .sw{position:relative;width:34px;height:20px;border-radius:999px;background:#c8c4be;transition:background .2s;flex-shrink:0}
+.mini-toggle .sw::after{content:"";position:absolute;top:2.5px;left:3px;width:15px;height:15px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:left .2s}
+.mini-toggle.on .sw{background:var(--brand)}
+.mini-toggle.on .sw::after{left:16px}
+#markingFields{display:flex;flex-direction:column;gap:14px}
+#markingFields[hidden]{display:none}
+
+/* WORKSPACE — compare.html style: 400px form + fluid preview, full-bleed */
+.layout{max-width:1480px;margin:0 auto;padding:24px 32px 40px;display:grid;grid-template-columns:400px minmax(0,1fr);gap:28px;align-items:start;background:#fff}
+
+/* EDITOR — roomy, breathing space; desktop: own scroll so preview never scrolls away */
+.editor{min-width:0}
+@media(min-width:1025px){
+  .editor{position:sticky;top:calc(var(--nav-h) + 24px);max-height:calc(100vh - var(--nav-h) - 48px);overflow-y:auto;overflow-x:hidden;padding-right:10px;scrollbar-width:thin;scrollbar-color:#c8c4be transparent}
+  .editor::-webkit-scrollbar{width:8px}
+  .editor::-webkit-scrollbar-track{background:transparent}
+  .editor::-webkit-scrollbar-thumb{background:#c8c4be;border-radius:8px}
+  .preview-col{position:sticky;top:calc(var(--nav-h) + 24px);max-height:calc(100vh - var(--nav-h) - 48px);overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:#c8c4be transparent}
+  .preview-col::-webkit-scrollbar{width:8px}
+  .preview-col::-webkit-scrollbar-track{background:transparent}
+  .preview-col::-webkit-scrollbar-thumb{background:#c8c4be;border-radius:8px}
+}
+.panel-head{display:flex;align-items:center;justify-content:space-between;margin:0 0 16px;padding-bottom:12px;border-bottom:1px solid #ede9e4}
+.panel-head h2{margin:0;font-size:16px;font-weight:600;display:flex;align-items:center;gap:10px}
+.live-badge{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;background:#d9f3e1;color:#1aae39;padding:4px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#1aae39;animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(26,174,57,.55)}70%{box-shadow:0 0 0 6px rgba(26,174,57,0)}100%{box-shadow:0 0 0 0 rgba(26,174,57,0)}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:18px;overflow:hidden;box-shadow:var(--shadow)}
+.card summary{padding:15px 18px;font-weight:600;font-size:14px;cursor:pointer;list-style:none;background:#faf9f8;border-bottom:1px solid var(--line)}
+.card summary::-webkit-details-marker{display:none}
+.card-body{padding:18px;display:flex;flex-direction:column;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px;font-size:13px;margin-bottom:2px}
+.field span{font-weight:500;color:#37352f}
+.field input,.field select,.field textarea{border:1px solid #c8c4be;border-radius:8px;padding:10px 13px;font-size:14px;font-family:inherit;background:#fff;width:100%;min-height:42px}
+.field textarea{min-height:70px;resize:vertical;line-height:1.55}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:#a4a097}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(15,118,110,.15)}
+#baseSizeCustom[hidden],#lineSpacingCustom[hidden]{display:none}
+/* COMBOBOX PICKERS — floating fuzzy dropdowns (teacher, course code/title) */
+.combo{position:relative}
+.combo-list{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:1px solid #e7e5e0;border-radius:14px;box-shadow:0 20px 50px rgba(17,24,39,.18),0 2px 8px rgba(17,24,39,.08);max-height:300px;overflow-y:auto;margin:0;padding:8px;list-style:none;z-index:60;scrollbar-width:thin;scrollbar-color:#c8c4be transparent}
+.combo-list::-webkit-scrollbar{width:8px}
+.combo-list::-webkit-scrollbar-thumb{background:#c8c4be;border-radius:8px}
+.combo-list[hidden]{display:none}
+.combo-list:not([hidden]){animation:comboIn .14s ease-out}
+@keyframes comboIn{from{opacity:0;transform:translateY(-5px) scale(.99)}to{opacity:1;transform:none}}
+/* free-floating mode: moved to <body> so card overflow never clips it */
+.combo-list.combo-float{position:fixed;top:auto;left:auto;right:auto;margin:0}
+.combo-list .combo-group{position:sticky;top:-8px;background:rgba(255,255,255,.94);backdrop-filter:blur(4px);font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--brand);padding:8px 10px 5px;z-index:1}
+.combo-list .combo-group:not(:first-child){border-top:1px solid #f1efec;margin-top:4px;padding-top:10px}
+.combo-list li[data-idx]{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:10px;cursor:pointer;border:1px solid transparent}
+.combo-list li[data-idx]:hover{background:#f6f5f4}
+.combo-list li[data-idx].active{background:#f0fdfa;border-color:#99e6d6}
+.combo-list li[data-idx].active::after{content:"\2713";margin-left:auto;color:var(--brand);font-weight:800;font-size:14px;flex-shrink:0}
+.combo-list .t-avatar,.combo-list .t-badge{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800;letter-spacing:.3px;flex-shrink:0}
+.combo-list .t-badge{border-radius:10px;font-size:10.5px}
+.combo-list .t-text{min-width:0;flex:1;display:flex;flex-direction:column;gap:1px}
+.combo-list .t-name{font-size:14px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.combo-list .t-title{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.combo-list mark{background:#fef9c3;color:inherit;border-radius:3px;padding:0 1px}
+.combo-list .combo-empty{padding:12px 10px;display:flex;flex-direction:column;gap:2px}
+.combo-list .combo-hint{position:sticky;bottom:-8px;background:rgba(255,255,255,.94);backdrop-filter:blur(4px);text-align:center;font-size:11px;color:var(--muted);padding:8px 6px 4px;border-top:1px solid #f1efec;margin-top:4px;cursor:default}
+.combo-list .combo-hint b{color:var(--ink);font-weight:700}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+/* keep side-by-side fields horizontally aligned even when one label wraps to 2 lines */
+.row2 .field > span:first-child{min-height:2.7em}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.check{display:flex;gap:9px;align-items:center;font-size:13.5px;font-weight:500}
+.mini-head{margin:0;font-size:13px;font-weight:600}
+.hint{font-size:12.5px;color:var(--muted);margin:0;line-height:1.6}
+.custom-font{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:12px}
+.custom-font[hidden]{display:none}
+.tex-actions{display:flex;gap:8px}
+.texbox{background:#0b1220;color:#d1fae5;border-radius:10px;padding:14px;max-height:320px;overflow:auto;margin:0}
+.texbox code{background:transparent;color:inherit;padding:0;font-size:11.5px;white-space:pre}
+.guide ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:9px;font-size:14px;line-height:1.6}
+.val{font-style:normal;font-size:12px;color:var(--brand);font-weight:700}
+
+/* PREVIEW — WINDOWLESS: bare real-size A4, no stage box, no bar, no chrome */
+.preview-col{min-width:0}
+.preview-wrap{display:flex;justify-content:center;align-items:flex-start;width:100%;min-width:0;overflow:hidden}
+.preview-scaler{display:flex;justify-content:center;align-items:flex-start;transform-origin:top center}
+.sheet{width:210mm;height:297mm;background:#fff;color:#000;box-shadow:0 6px 28px rgba(0,0,0,.14);font-family:var(--sheet-font);font-synthesis:weight style;font-size:calc(var(--base-pt) * 1pt);line-height:var(--leading);overflow:hidden;flex-shrink:0;display:flex;flex-direction:column;transform-origin:top center;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-kerning:normal;font-feature-settings:"kern" 1,"liga" 1;font-optical-sizing:auto}
+.sheet .logo-wrap img{image-rendering:auto;transform:translateZ(0);}
+.page-inner{padding:25.4mm 25.4mm 20mm 30.48mm;height:297mm;display:flex;flex-direction:column;overflow:hidden}
+
+/* ===== SHEET — compact one-page scale ===== */
+.top-block{text-align:center}
+.sheet .moto{text-align:center;font-style:italic;font-size:11pt;margin:0 0 2mm;line-height:1.1}
+.sheet .logo-wrap{text-align:center;margin:0 0 2mm}
+.sheet .logo-wrap img{width:2.5cm;height:auto;object-fit:contain;display:inline-block}
+.sheet .dept,.sheet .univ{text-align:center;font-weight:700;font-size:13.5pt;line-height:1.5;margin:0}
+.sheet .labhead{text-align:center;font-weight:700;font-size:14pt;margin:4mm 0 2mm}
+.sheet .course{text-align:center;font-weight:700;font-size:12.5pt;margin:0 0 7mm}
+.sheet .rule{border:0;border-top:1pt solid #000;margin:0;height:0;background:none}
+.sheet .chapter{text-align:center;padding:2.5mm 0}
+.sheet .exp-no{text-align:center;font-weight:700;font-size:14pt;line-height:1.25;margin:0}
+.sheet .exp-title{text-align:center;font-weight:700;font-size:12pt;line-height:1.55;display:block;margin-top:2mm;padding:0 1mm;word-break:break-word}
+.sheet .people{display:flex;justify-content:space-between;width:100%;margin-top:5mm;font-size:11pt;line-height:1.5}
+.sheet .person{width:46%}
+.sheet .person.left{text-align:left;padding-left:8mm}
+.sheet .person.right{text-align:right;padding-right:8mm}
+.sheet .person p{margin:0}
+.sheet .p-head{font-style:italic;font-weight:700}
+.sheet .dates{margin-top:4mm;text-align:center;font-weight:700;font-size:11pt}
+.sheet .dates p{margin:0}
+.sheet .dates p + p{margin-top:1mm}
+.sheet .spacer{flex:1 1 auto;min-height:8mm}
+.sheet .marks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;border-top:1pt solid #000;padding-top:14pt;margin-top:2mm;text-align:center}
+.sheet .mark-col{min-width:0}
+.sheet .mark-head{font-weight:700;margin:0 0 5pt;font-size:11pt;letter-spacing:.1pt}
+.sheet .mark-head.under u{text-decoration:none;border-bottom:1pt solid #000;padding-bottom:2.5pt;}
+.sheet .marks ul{list-style:none;margin:0;padding:0;display:inline-block;text-align:left}
+.sheet .marks li{margin:1.5pt 0;line-height:1.5;font-size:11pt;white-space:nowrap;display:flex;gap:7pt;align-items:baseline}
+.sheet .box{font-size:12pt;line-height:1.4}
+.sheet .sig-col{display:flex;flex-direction:column;align-items:center;height:100%}
+.sheet .sig-space{flex:1 1 auto;min-height:14mm}
+.sheet .sig-line{border-top:1pt solid #000;width:100%;padding-top:2.5pt}
+.sheet .sig-cap{margin:0;font-size:10.5pt;letter-spacing:.2pt}
+.sheet [data-field]{outline:none}
+.sheet [data-field]:focus{outline:none}
+.field-flash{border-color:#f59e0b!important;box-shadow:0 0 0 3px #fde68a!important}
+
+/* FLOATING FORMAT TOOLBAR — Word-style, appears on text selection in tap-to-edit */
+#fmtToolbar{position:fixed;left:0;top:0;display:none;align-items:center;gap:2px;background:#111827;border:1px solid #374151;border-radius:11px;padding:6px;box-shadow:0 12px 32px rgba(0,0,0,.35);z-index:300}
+#fmtToolbar.show{display:flex}
+#fmtToolbar button{min-width:32px;height:32px;padding:0 8px;border:0;border-radius:7px;background:transparent;color:#f9fafb;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;line-height:1;white-space:nowrap}
+#fmtToolbar button:hover{background:#374151}
+#fmtToolbar button:active{background:#4b5563}
+#fmtToolbar button sup,#fmtToolbar button sub{font-size:9px}
+#fmtToolbar .sep{width:1px;height:22px;background:#374151;margin:0 3px;flex-shrink:0}
+.foot{max-width:1480px;margin:0 auto;padding:0 32px 28px;color:var(--muted);font-size:13px}
+#printRoot{display:none}
+
+/* RESPONSIVE — mobile: editor on top, preview below */
+/* Medium screens: tighten the roomy nav before it collapses */
+@media(max-width:1240px){
+  .nav-inner{padding:10px 18px;gap:16px}
+  .nav-links{gap:14px;margin-left:4px}
+  .nav-cta-row{gap:8px}
+  .tap-toggle{padding:7px 11px;font-size:12.5px}
+  .btn-sm{padding:7px 12px;font-size:12.5px}
+}
+/* Tablet + phone: hamburger menu holding links AND actions */
+@media(max-width:1024px){
+  .layout{grid-template-columns:1fr;gap:22px;padding:20px 20px 32px}
+  .grid2{grid-template-columns:1fr}
+  .hamburger{display:flex}
+  .nav-actions{margin-left:auto}
+  .nav-pdf{display:inline-block}
+  .nav-links{position:absolute;top:100%;left:12px;right:12px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 40px rgba(17,24,39,.16);flex-direction:column;align-items:stretch;padding:10px;display:none;gap:2px;z-index:99;max-height:calc(100vh - var(--nav-h) - 24px);overflow-y:auto;margin-left:0;flex:none}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:11px 12px;border-radius:9px;font-size:15px}
+  .nav-links a:hover{background:#f3f4f6}
+  .nav-cta-row{flex-direction:column;align-items:stretch;gap:8px;margin-left:0;padding-top:8px;border-top:1px solid var(--line)}
+  .nav-cta-row .btn{width:100%;text-align:center;padding:11px 14px;font-size:14px}
+  .tap-toggle{justify-content:center;padding:10px 14px}
+}
+@media(max-width:640px){
+  :root{--nav-h:58px}
+  .nav-inner{padding:7px 12px;gap:10px}
+  .brand{gap:9px}
+  .brand-mark{width:32px;height:32px;font-size:19px}
+  .brand-text{font-size:17px}
+  .brand-text small{font-size:10px}
+  .row2{grid-template-columns:1fr}
+  .sheet .person.left{padding-left:3mm}
+  .sheet .person.right{padding-right:3mm}
+  .sheet .marks{gap:10px}
+  .sheet .marks li{font-size:10pt}
+  .layout{padding:14px 14px 24px}
+}
+/* Very small phones: compact brand, full-width menu */
+@media(max-width:400px){
+  .brand-text small{display:none}
+  .brand-text{font-size:16px}
+  .nav-links{left:8px;right:8px}
+}
+
+/* PRINT — the sheet itself, strictly ONE A4 page. PDF = this via Save as PDF. */
+@page{size:A4;margin:0}
+@media print{
+  #fmtToolbar{display:none!important}
+  html,body{background:#fff!important;margin:0!important;padding:0!important;height:auto}
+  .nav,.editor,.preview-col,.foot{display:none!important}
+  .layout{display:block;padding:0;margin:0;max-width:none}
+  body *{visibility:hidden}
+  #printRoot{display:block!important}
+  #printRoot,#printRoot *{visibility:visible}
+  #printRoot{position:absolute;left:0;top:0;width:210mm}
+  #printRoot .sheet{box-shadow:none;width:210mm;height:297mm;margin:0;overflow:hidden;transform:none!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;}
+  #printRoot .page-inner{padding:25.4mm 25.4mm 20mm 30.48mm;height:297mm;overflow:hidden}
+  #printRoot .spacer{min-height:4mm}
+  #printRoot .marks{padding-top:12pt}
+  #printRoot .sig-space{min-height:10mm}
+}
